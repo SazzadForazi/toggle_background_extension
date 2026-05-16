@@ -1,0 +1,180 @@
+#trading-draw-overlay-root {
+  all: initial;
+}
+
+#trading-draw-overlay-root,
+#trading-draw-overlay-root * {
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#trading-draw-overlay-root {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  pointer-events: none;
+}
+
+.tdo-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  touch-action: none;
+}
+
+.tdo-toolbar-shell {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  pointer-events: auto;
+}
+
+.tdo-toggle {
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(71, 85, 105, 0.82);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(8, 15, 28, 0.94));
+  color: #e2e8f0;
+  border-radius: 18px;
+  cursor: pointer;
+  box-shadow: 0 18px 40px rgba(2, 8, 23, 0.42);
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.tdo-toggle:hover,
+.tdo-button:hover,
+.tdo-action:hover {
+  transform: translateY(-1px);
+}
+
+.tdo-toggle:hover {
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
+.tdo-toolbar {
+  max-height: calc(100vh - 96px);
+  transform-origin: left top;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.tdo-toolbar.is-collapsed {
+  opacity: 0;
+  transform: translateX(-14px) scale(0.96);
+  pointer-events: none;
+}
+
+.tdo-tool-row {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  max-height: inherit;
+  padding: 10px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(30, 41, 59, 0.94);
+  background: linear-gradient(180deg, rgba(8, 17, 31, 0.96), rgba(8, 17, 31, 0.9));
+  box-shadow: 0 18px 40px rgba(2, 8, 23, 0.42);
+  backdrop-filter: blur(16px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.tdo-divider {
+  width: 100%;
+  height: 1px;
+  flex: 0 0 1px;
+  background: rgba(71, 85, 105, 0.65);
+  margin: 2px 0;
+}
+
+.tdo-button,
+.tdo-action {
+  width: 58px;
+  height: 40px;
+  flex: 0 0 auto;
+  border-radius: 12px;
+  border: 1px solid rgba(30, 41, 59, 0.95);
+  background: rgba(15, 23, 42, 0.92);
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  padding: 4px;
+}
+
+.tdo-button:hover,
+.tdo-action:hover {
+  border-color: rgba(100, 116, 139, 0.94);
+  background: rgba(30, 41, 59, 0.96);
+  color: #fff;
+}
+
+.tdo-button:disabled,
+.tdo-action:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.tdo-button.is-active,
+.tdo-action.is-active {
+  border-color: #38bdf8;
+  background: rgba(14, 116, 144, 0.24);
+  color: #38bdf8;
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.32);
+}
+
+.tdo-action.is-danger {
+  border-color: rgba(127, 29, 29, 0.94);
+  background: rgba(127, 29, 29, 0.18);
+  color: #fca5a5;
+}
+
+.tdo-action.is-warn {
+  border-color: rgba(120, 53, 15, 0.94);
+  background: rgba(120, 53, 15, 0.18);
+  color: #fde68a;
+}
+
+@media (max-width: 1100px) {
+  .tdo-toolbar {
+    max-height: calc(100vh - 88px);
+  }
+}
+
+@media (max-width: 720px) {
+  .tdo-toolbar-shell {
+    top: 12px;
+    left: 12px;
+    gap: 8px;
+  }
+
+  .tdo-toggle {
+    width: 46px;
+    height: 46px;
+  }
+
+  .tdo-toolbar {
+    max-height: calc(100vh - 74px);
+  }
+
+  .tdo-tool-row {
+    padding: 8px 10px;
+  }
+}
